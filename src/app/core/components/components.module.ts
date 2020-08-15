@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   imports: [
@@ -22,10 +23,12 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ReactiveFormsModule,
     // Angular Material
     MatSidenavModule,
+    // Components
     SidenavComponent,
+    MapComponent,
   ],
   providers: [],
-  declarations: [SidenavComponent],
+  declarations: [SidenavComponent, MapComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}
