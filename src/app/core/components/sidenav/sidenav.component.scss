@@ -1,0 +1,27 @@
+.example-sidenav {
+  padding-left: 1rem;
+}
+
+.user-photo {
+  filter: opacity(0.5);
+}
+
+li.active {
+  background: #f3eff9;
+  border-left: 3px solid #0c9 !important;
+  i,
+  a {
+    color: #000000cf;
+  }
+}
+
+li {
+  i,
+  a {
+    color: #787c7db5;
+  }
+
+  i {
+    font-size: x-large;
+  }
+}
