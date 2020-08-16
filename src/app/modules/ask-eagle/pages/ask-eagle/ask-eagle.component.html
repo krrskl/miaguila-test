@@ -28,22 +28,27 @@
     </div>
 
     <div class="ask-stepper__content">
-      <mat-horizontal-stepper linear #stepper>
-        <mat-step>
-          <form class="position-relative">
+      <mat-horizontal-stepper [selectedIndex]="stepIndex" (animationDone)="changeStepper(stepper)" linear #stepper>
+        <mat-step [stepControl]="form.get('origin')" label="origin">
+          <form [formGroup]="form" class="position-relative">
             <i class="pin"></i>
             <ng-template matStepLabel>Origen</ng-template>
 
             <mat-form-field appearance="legacy" class="custom-field ml-3">
               <mat-label>¿Dónde te recogemos?</mat-label>
-              <input matInput>
+              <input matInput type="text" formControlName="origin">
             </mat-form-field>
           </form>
         </mat-step>
 
-        <mat-step>
-          <form>
+        <mat-step [stepControl]="form.get('destination')" label="destination">
+          <form [formGroup]="form">
             <ng-template matStepLabel>Destino</ng-template>
+
+            <mat-form-field appearance="legacy" class="custom-field ml-3">
+              <mat-label>¿A dónde vamos?</mat-label>
+              <input matInput type="text" formControlName="destination">
+            </mat-form-field>
           </form>
         </mat-step>
       </mat-horizontal-stepper>

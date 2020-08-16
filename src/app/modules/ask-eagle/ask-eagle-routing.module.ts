@@ -4,8 +4,13 @@ import { AskEagleComponent } from './pages/ask-eagle/ask-eagle.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'ask-eagle/:type/:location',
     component: AskEagleComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'ask-eagle/origin/',
+    pathMatch: 'full',
   },
 ];
 
