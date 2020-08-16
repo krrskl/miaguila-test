@@ -1,0 +1,35 @@
+{
+  "data": {
+    "trips": [
+      {
+        "from": {
+          "name": "Mi casa",
+          "address": "Mz v casa 30",
+          "location": [11.2269008, -74.201609]
+        },
+        "to": {
+          "name": "Universidad del Magdalena",
+          "address": "Calle 32 ##22-08",
+          "location": [11.2263842, -74.1948443]
+        }
+      }
+    ],
+    "favorites": [
+      {
+        "name": "Mi casa",
+        "address": "Mz v casa 30",
+        "location": [11.2269008, -74.201609]
+      },
+      {
+        "name": "Universidad del Magdalena",
+        "address": "Calle 32 ##22-08",
+        "location": [11.2263842, -74.1948443]
+      },
+      {
+        "name": "MAKRO SUPERMAYORISTA S.A",
+        "address": "Carrera 15 av. Ferrocarril # 29-364",
+        "location": [11.229608, -74.2010027]
+      }
+    ]
+  }
+}
