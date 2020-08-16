@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 interface NodeRoute {
@@ -15,7 +14,6 @@ interface NodeRoute {
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-  @ViewChild('drawer', { static: true }) public drawer: MatSidenav;
   public routes: NodeRoute[] = [
     {
       name: 'Vuelos',
@@ -62,12 +60,5 @@ export class SidenavComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    const availWidth = window.screen.availWidth;
-    console.log(availWidth, this.drawer);
-
-    if (availWidth <= 700) {
-      this.drawer.close();
-    }
-  }
+  ngOnInit() {}
 }

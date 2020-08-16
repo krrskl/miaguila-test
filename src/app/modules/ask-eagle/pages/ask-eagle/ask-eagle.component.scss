@@ -1,0 +1,131 @@
+.main-container {
+  height: 100%;
+  width: calc(100% - 300px);
+  margin: unset;
+  float: right;
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    width: 100%;
+    float: none;
+  }
+}
+
+.custom-field {
+  width: 90%;
+}
+
+.ask-stepper {
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: calc(1rem + 300px);
+  width: 350px;
+  height: 90%;
+  transform: translate(0, -50%);
+  background: linear-gradient(0, #ffffff 90%, #647fa3 10%);
+
+  .ask-stepper__header {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    .header__step {
+      .header-step__circle {
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--gray-color);
+        border-radius: 50%;
+        i {
+          filter: opacity(0.5);
+        }
+      }
+
+      &.active {
+        .header-step__circle,
+        .header-step__title {
+          color: var(--primary-color);
+        }
+        .header-step__circle {
+          background: #d5fff3;
+          border: 2px solid var(--primary-color);
+        }
+      }
+    }
+  }
+
+  .ask-stepper__content {
+    ::ng-deep .mat-horizontal-content-container {
+      background: #d5fff3;
+      padding-bottom: 0.5rem !important;
+    }
+  }
+
+  .ask-stepper__footer {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    bottom: 1rem;
+    border-top: 2px solid var(--gray-color);
+    transform: translate(-50%, 0);
+  }
+}
+
+.trips {
+  overflow: scroll;
+  max-height: 41vh;
+}
+
+.flex-align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pin css pure */
+.pin {
+  background-color: #aaa;
+  background-image: linear-gradient(
+    to left,
+    var(--gray-color),
+    hsla(0, 0%, 0%, 0.2)
+  );
+  display: block;
+  height: 2em;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  width: 0.1em;
+}
+.pin:after {
+  background-color: var(--primary-color);
+  background-image: radial-gradient(
+    25% 25% at 0 0,
+    circle,
+    var(--gray-color),
+    hsla(0, 0%, 0%, 0.2)
+  );
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, 0.1),
+    inset 0.2em 0.2em 0.2em var(--gray-color),
+    inset -0.2em -0.2em 0.2em hsla(0, 0%, 0%, 0.2),
+    1.5em 1.25em 0.25em hsla(0, 0%, 0%, 0.15);
+  content: '';
+  height: 0.8em;
+  left: -0.35em;
+  position: absolute;
+  top: -0.65em;
+  width: 0.8em;
+}
+.pin:before {
+  background-color: hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 0 0.25em hsla(0, 0%, 0%, 0.1);
+  content: '';
+  height: 1.5em;
+  left: 0;
+  position: absolute;
+  top: 0.5em;
+  transform: rotate(57.5deg);
+  transform-origin: 50% 100%;
+  width: 0.1em;
+}

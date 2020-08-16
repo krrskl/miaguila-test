@@ -2,7 +2,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { MatSidenavModule } from '@angular/material';
+import {
+  MatSidenavModule,
+  MatStepperModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MapComponent } from './map/map.component';
@@ -14,6 +20,10 @@ import { MapComponent } from './map/map.component';
     ReactiveFormsModule,
     // Angular Material
     MatSidenavModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     CommonModule,
     RouterModule,
   ],
@@ -23,6 +33,10 @@ import { MapComponent } from './map/map.component';
     ReactiveFormsModule,
     // Angular Material
     MatSidenavModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     // Components
     SidenavComponent,
     MapComponent,
