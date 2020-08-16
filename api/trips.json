@@ -1,0 +1,18 @@
+{
+  "data": {
+    "trips": [
+      {
+        "from": {
+          "name": "Mi casa",
+          "address": "Mz v casa 30",
+          "location": [11.2269008, -74.201609]
+        },
+        "to": {
+          "name": "Universidad del Magdalena",
+          "address": "Calle 32 ##22-08",
+          "location": [11.2263842, -74.1948443]
+        }
+      }
+    ]
+  }
+}
