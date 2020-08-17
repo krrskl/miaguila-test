@@ -28,6 +28,10 @@ Implementation of Github Actions to deploy the application in Firebase Hosting.
 6. Bootstrap 4
 7. Angular Material
 
+### CSS conventions
+
+8. BEM
+
 ## Installation of dependencies
 
 Run `npm i`
