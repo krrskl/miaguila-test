@@ -56,6 +56,20 @@ export class AskEagleComponent implements OnInit, OnDestroy {
       destination: defaultData(),
     });
 
+    this.form.statusChanges.subscribe(() => {
+      if (this.origin && this.origin.name !== this.form.value.origin) {
+        this.origin = null;
+        this.destination = null;
+      }
+
+      if (
+        this.destination &&
+        this.destination.name !== this.form.value.destination
+      ) {
+        this.destination = null;
+      }
+    });
+
     this.mapService.buildMap();
 
     this.mapService.createMapboxDirection();
