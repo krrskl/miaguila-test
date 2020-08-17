@@ -1,0 +1,19 @@
+.trip {
+  .trip__star {
+    background: #fff6b6;
+    color: #d1c465;
+    width: 30px;
+    height: 30px;
+  }
+  cursor: pointer;
+  &.disabled {
+    filter: opacity(0.5);
+  }
+}
+
+.flex-align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
