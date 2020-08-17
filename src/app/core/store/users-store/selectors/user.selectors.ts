@@ -1,15 +1,14 @@
 /* Ngrx */
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 /* Reducers */
-import {
-  UserAppState,
-  UserState,
-  userFeatureKey,
-} from '../reducers/user.reducer';
+import * as fromROOT from '@core/store/reducers/app.reducers';
 
-export const selectUsersState = createFeatureSelector<UserAppState, UserState>(
-  userFeatureKey,
-);
+import { UserState, userFeatureKey } from '../reducers/user.reducer';
+
+export const selectUsersState = createFeatureSelector<
+  fromROOT.AppState,
+  UserState
+>(userFeatureKey);
 
 export const selectUserPending = createSelector(
   selectUsersState,

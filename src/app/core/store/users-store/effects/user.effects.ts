@@ -22,8 +22,9 @@ export class UserEffects {
       ofType(UserActions.getFavoritesAddress),
       mergeMap(() =>
         this.userService.getFavoritesAddress().pipe(
-          map(({ data }) =>
-            UserActions.getFavoritesAddressSuccess({ favorites: data }),
+          map(({ data }) => data),
+          map(({ favorites }) =>
+            UserActions.getFavoritesAddressSuccess({ favorites }),
           ),
           catchError(this.handleError),
         ),

@@ -16,7 +16,7 @@ export const getFavoritesAddress = createAction(
 );
 
 export const getFavoritesAddressSuccess = createAction(
-  UserActionsTypes.GET_FAVORITES_ADDRESS,
+  UserActionsTypes.GET_FAVORITES_ADDRESS_SUCCESS,
   props<{ favorites: Direction[] }>(),
 );
 

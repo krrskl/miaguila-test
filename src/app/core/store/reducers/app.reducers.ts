@@ -25,7 +25,7 @@ export const appReducers = new InjectionToken<
   ActionReducerMap<AppState, Action>
 >('Root reducers', {
   factory: () => ({
-    [fromUSER.userFeatureKey]: fromUSER.reducerUser,
+    [fromUSER.userFeatureKey]: fromUSER.userReducer,
   }),
 });
 
