@@ -26,3 +26,18 @@ li {
     font-size: x-large;
   }
 }
+
+.menu-container {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 1rem;
+  z-index: 10;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  &.btn--primary {
+    background: var(--primary-color);
+  }
+}

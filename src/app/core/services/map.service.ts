@@ -51,6 +51,7 @@ export class MapService {
         });
 
         this.map.addControl(this.mapboxDirection);
+        this.mapboxDirection.interactive(false);
       }
     });
   }
