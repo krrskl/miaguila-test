@@ -28,13 +28,25 @@ Implementation of Github Actions to deploy the application in Firebase Hosting.
 6. Bootstrap 4
 7. Angular Material
 
+### CSS conventions
+
+8. BEM
+
+## Installation of dependencies
+
+Run `npm i`
+
 ## Development server
 
-Run `ng s -o` for a dev server.
+Run `npm run start` for a dev server.
+
+## Runing Unit test
+
+Run `npm run test`
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build-prod` command for a production build.
 
 ## Screnshots
 
