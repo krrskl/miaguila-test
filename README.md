@@ -36,6 +36,10 @@ Run `npm i`
 
 Run `npm run start` for a dev server.
 
+## Runing Unit test
+
+Run `npm run test`
+
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build-prod` command for a production build.

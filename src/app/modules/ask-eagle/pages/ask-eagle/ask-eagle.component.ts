@@ -48,7 +48,14 @@ export class AskEagleComponent implements OnInit, OnDestroy {
     private locationService: Location,
     private store$: Store<AppState>,
     private tripStore$: Store<TripAppState>,
-  ) {}
+    private activeRoute: ActivatedRoute,
+  ) {
+    const { location } = this.activeRoute.snapshot.params;
+
+    if (location === 'destination') {
+      this.locationService.replaceState('ask-eagle/origin');
+    }
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -136,6 +143,7 @@ export class AskEagleComponent implements OnInit, OnDestroy {
   changeStepper(stepper: any): void {
     const { label } = stepper.selected;
     this.label = label;
+    this.updateRoute();
   }
 
   /**
