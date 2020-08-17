@@ -11,7 +11,7 @@ export const tripFeatureKey = 'trips';
 
 export interface TripState {
   pending: boolean;
-  trips: Trip[];
+  trip: Trip | null;
 }
 
 export interface TripAppState extends AppState {
@@ -20,16 +20,16 @@ export interface TripAppState extends AppState {
 
 export const initialState: TripState = {
   pending: true,
-  trips: [],
+  trip: null,
 };
 
 const tripReducer = createReducer(
   initialState,
   on(TripActions.getTrips, state => ({ ...state, pending: true })),
-  on(TripActions.getTripsSuccess, (state, { trips }) => ({
+  on(TripActions.getTripsSuccess, (state, { trip }) => ({
     ...state,
     pending: false,
-    trips,
+    trip,
   })),
   on(TripActions.tripFailure, state => ({ ...state, pending: false })),
 );

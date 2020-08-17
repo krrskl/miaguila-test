@@ -22,7 +22,8 @@ export class TripEffects {
       ofType(TripActions.getTrips),
       mergeMap(() =>
         this.tripService.getTrips().pipe(
-          map(({ trips }) => TripActions.getTripsSuccess({ trips })),
+          map(({ data }) => data),
+          map(({ trips: trip }) => TripActions.getTripsSuccess({ trip })),
           catchError(this.handleError),
         ),
       ),
