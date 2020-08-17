@@ -28,3 +28,9 @@
   </ul>
 
 </mat-drawer>
+
+<div class="d-sm-block d-xs-block menu-container">
+  <button class="btn btn--primary text-light b-0 rounded-circle" (click)="drawer.toggle()">
+    <i class="fas" [ngClass]="drawer.opened ? 'fa-times': 'fa-bars'"></i>
+  </button>
+</div>
