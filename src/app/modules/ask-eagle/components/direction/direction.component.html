@@ -1,0 +1,14 @@
+<div class="trip mb-2" (click)="select()" [ngClass]="disabled ? 'disabled': ''">
+  <div class="row">
+    <div class="col-3 flex-align-center">
+      <div class="trip__star rounded-circle flex-align-center">
+        <i class="fas fa-star"></i>
+      </div>
+    </div>
+
+    <div class="col-9 pl-0">
+      <p class="m-0">{{ data.name }}</p>
+      <small>{{ data.address }} {{ disabled }}</small>
+    </div>
+  </div>
+</div>

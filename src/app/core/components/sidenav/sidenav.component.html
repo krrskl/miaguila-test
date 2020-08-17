@@ -1,0 +1,30 @@
+<mat-drawer #drawer class="example-sidenav" [opened]="!mobileQuery.matches" mode="side">
+  <div class="pt-3 pl-3">
+    <img src="./../assets/images/logo.svg" width="55%" alt="Mi Águila logo">
+  </div>
+
+  <div class="user-section d-flex flex-column align-items-center">
+    <img src="./../assets/images/user.png" width="50%" class="user-photo rounded-circle" alt="User photo">
+    <strong>Jorge Solano</strong>
+    <p>Beneficiario</p>
+  </div>
+
+  <hr>
+
+  <ul class="list-group">
+    <li class="list-group-item border-0 active">
+      <img src="./../../../../assets/images/eagle.svg" class="mr-2" width="10%" alt="Eagle">
+      <a routerLink="/" routerLinkActive="active">
+        Pedir Águila
+      </a>
+    </li>
+
+    <li class="list-group-item border-0" *ngFor="let route of routes">
+      <i [class]="'mr-2 fas fa-' + route.icon"></i>
+      <a [routerLink]="route.path" routerLinkActive="active">
+        {{ route.name }}
+      </a>
+    </li>
+  </ul>
+
+</mat-drawer>
