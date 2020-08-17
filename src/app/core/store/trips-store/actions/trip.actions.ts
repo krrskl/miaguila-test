@@ -15,7 +15,7 @@ export const getTrips = createAction(TripActionsTypes.GET_TRIPS);
 
 export const getTripsSuccess = createAction(
   TripActionsTypes.GET_TRIPS_SUCCESS,
-  props<{ trips: Trip[] }>(),
+  props<{ trip: Trip }>(),
 );
 
 export const tripFailure = createAction(

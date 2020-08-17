@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import * as mapboxgl from 'mapbox-gl';
+import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MapService {
   private mapbox = mapboxgl as typeof mapboxgl;
+  private mapboxDirection: any;
   private map: mapboxgl.Map;
   private style = `mapbox://styles/mapbox/light-v10`;
   private lat = 11.2270716;
@@ -33,5 +35,27 @@ export class MapService {
     });
     this.map.addControl(new mapboxgl.NavigationControl());
     this.map.on('load', () => this.mapSubject.next(true));
+  }
+
+  public createMapboxDirection(): void {
+    this.statusMap.subscribe(state => {
+      if (state) {
+        this.mapboxDirection = new MapboxDirections({
+          accessToken: environment.map_box_token,
+          unit: 'metric',
+          profile: 'mapbox/driving',
+          controls: {
+            inputs: false,
+            instructions: false,
+          },
+        });
+
+        this.map.addControl(this.mapboxDirection);
+      }
+    });
+  }
+
+  public get getMapboxDirections(): any {
+    return this.mapboxDirection;
   }
 }
