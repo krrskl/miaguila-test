@@ -56,12 +56,12 @@ export class AskEagleComponent implements OnInit, OnDestroy {
       destination: defaultData(),
     });
 
-    // this.mapService.buildMap();
+    this.mapService.buildMap();
 
-    // this.mapService.createMapboxDirection();
+    this.mapService.createMapboxDirection();
 
-    // this.store$.dispatch(UserActions.getFavoritesAddress());
-    // this.tripStore$.dispatch(TripActions.getTrips());
+    this.store$.dispatch(UserActions.getFavoritesAddress());
+    this.tripStore$.dispatch(TripActions.getTrips());
 
     this.userStoreSubscription = this.store$
       .select('user')
@@ -104,10 +104,13 @@ export class AskEagleComponent implements OnInit, OnDestroy {
         this.tripStoreSubscription = this.tripStore$
           .select('trips')
           .subscribe(({ trip }) => {
-            this.mapService.getMapboxDirections.setOrigin(trip.from.location);
-            this.mapService.getMapboxDirections.setDestination(
-              trip.to.location,
-            );
+            if (trip) {
+              this.mapService.getMapboxDirections.setOrigin(trip.from.location);
+              this.mapService.getMapboxDirections.setDestination(
+                trip.to.location,
+              );
+              this.expansion.close();
+            }
           });
       }
     });

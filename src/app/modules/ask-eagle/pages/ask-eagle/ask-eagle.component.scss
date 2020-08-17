@@ -87,6 +87,19 @@
   }
 }
 
+@media (max-width: 425px) {
+  .ask-stepper {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 320px) {
+  .ask-stepper {
+    width: 300px;
+  }
+}
+
 .btn-toggle.btn:focus,
 .btn-toggle.btn.focus {
   outline: none;
