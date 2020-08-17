@@ -19,5 +19,5 @@ export const selectTripsPending = createSelector(
 
 export const selectTrips = createSelector(
   selectTripsState,
-  (state: TripState) => state.trips,
+  (state: TripState) => state.trip,
 );

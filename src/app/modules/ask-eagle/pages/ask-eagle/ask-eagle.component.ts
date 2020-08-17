@@ -13,7 +13,7 @@ import {
   selectFavoritesAddress,
   selectUserPending,
 } from '@core/store/users-store/selectors/user.selectors';
-import { MatVerticalStepper } from '@angular/material';
+import { MatVerticalStepper, MatExpansionPanel } from '@angular/material';
 import { TripAppState } from '@core/store/trips-store/reducers/trip.reducer';
 import { TripActions } from '@core/store/trips-store/actions';
 
@@ -25,6 +25,7 @@ import { TripActions } from '@core/store/trips-store/actions';
 export class AskEagleComponent implements OnInit, OnDestroy {
   tripStoreSubscription: Subscription;
   userStoreSubscription: Subscription;
+
   stepIndex = 0;
   origin?: Direction;
   destination?: Direction;
@@ -32,6 +33,7 @@ export class AskEagleComponent implements OnInit, OnDestroy {
   label: string;
 
   @ViewChild('stepper', { static: true }) stepper: MatVerticalStepper;
+  @ViewChild('expansion', { static: true }) expansion: MatExpansionPanel;
 
   public favorites$: Observable<Direction[]> = this.store$.pipe(
     select(selectFavoritesAddress),
@@ -54,12 +56,12 @@ export class AskEagleComponent implements OnInit, OnDestroy {
       destination: defaultData(),
     });
 
-    this.mapService.buildMap();
+    // this.mapService.buildMap();
 
-    this.mapService.createMapboxDirection();
+    // this.mapService.createMapboxDirection();
 
-    this.store$.dispatch(UserActions.getFavoritesAddress());
-    this.tripStore$.dispatch(TripActions.getTrips());
+    // this.store$.dispatch(UserActions.getFavoritesAddress());
+    // this.tripStore$.dispatch(TripActions.getTrips());
 
     this.userStoreSubscription = this.store$
       .select('user')
@@ -90,6 +92,8 @@ export class AskEagleComponent implements OnInit, OnDestroy {
           );
           // Update the reactive form
           this.form.patchValue({ destination: destination.name });
+          // Close expansion
+          this.expansion.close();
           // Update the route in the browser
           this.updateRoute();
         }

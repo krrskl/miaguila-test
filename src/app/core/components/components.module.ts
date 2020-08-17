@@ -8,6 +8,7 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+  MatExpansionModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -24,6 +25,7 @@ import { MapComponent } from './map/map.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatExpansionModule,
     CommonModule,
     RouterModule,
   ],
@@ -37,6 +39,7 @@ import { MapComponent } from './map/map.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatExpansionModule,
     // Components
     SidenavComponent,
     MapComponent,
