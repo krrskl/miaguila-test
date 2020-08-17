@@ -2,6 +2,7 @@
   <app-map></app-map>
 
   <div class="ask-stepper">
+
     <div class="card ask-stepper__header mt-2 ml-4 mr-4 mt-4">
       <div class="row">
         <div class="col-4 header__step pt-2 pb-2 flex-align-center active">
@@ -28,7 +29,9 @@
     </div>
 
     <div class="ask-stepper__content">
-      <mat-horizontal-stepper [selectedIndex]="stepIndex" (animationDone)="changeStepper(stepper)" linear #stepper>
+      <mat-horizontal-stepper [selectedIndex]="stepIndex" 
+        (animationDone)="changeStepper(stepper)" linear #stepper>
+
         <mat-step [stepControl]="form.get('origin')" label="origin">
           <form [formGroup]="form" class="position-relative">
             <i class="pin"></i>
@@ -51,6 +54,7 @@
             </mat-form-field>
           </form>
         </mat-step>
+
       </mat-horizontal-stepper>
 
       <div class="container">
@@ -58,7 +62,10 @@
 
         <div class="row">
           <div class="col-12 trips" *ngIf="!(userLoading$ | async); else loading">
-            <app-direction *ngFor="let address of favorites$ | async" [data]="address"></app-direction>
+            <app-direction *ngFor="let address of favorites$ | async" 
+              [stepIndex]="stepper.selectedIndex" [data]="address" 
+              [disabled]="origin?.id === address.id || destination?.id === address.id">
+            </app-direction>
           </div>
 
           <ng-template #loading>
@@ -70,11 +77,15 @@
           </ng-template>
         </div>
       </div>
+
     </div>
 
     <div class="ask-stepper__footer pt-2">
       <div class="text-right">
-        <button mat-raised-button disabled class="btn">
+        <button mat-raised-button 
+          [disabled]="stepper.selectedIndex == 0 ? form.get('origin').invalid : form.get('destination').invalid"
+          (click)="stepper.selectedIndex == 0 ? stepper.next() : send()"
+          class="btn">
           <i class="fas fa-arrow-right"></i>
         </button>
       </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapService } from '@core/services/map.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -13,6 +13,7 @@ import {
   selectFavoritesAddress,
   selectUserPending,
 } from '@core/store/users-store/selectors/user.selectors';
+import { MatVerticalStepper } from '@angular/material';
 
 @Component({
   selector: 'app-ask-eagle',
@@ -21,7 +22,12 @@ import {
 })
 export class AskEagleComponent implements OnInit {
   stepIndex = 0;
+  origin?: Direction;
+  destination?: Direction;
+
+  @ViewChild('stepper', { static: true }) stepper: MatVerticalStepper;
   form: FormGroup;
+
   public favorites$: Observable<Direction[]> = this.store$.pipe(
     select(selectFavoritesAddress),
   );
@@ -53,6 +59,19 @@ export class AskEagleComponent implements OnInit {
     this.mapService.buildMap();
 
     this.store$.dispatch(UserActions.getFavoritesAddress());
+
+    this.store$.select('user').subscribe(({ origin, destination }) => {
+      if (origin && !this.stepper.selectedIndex) {
+        this.origin = origin;
+        this.form.patchValue({ origin: origin.name });
+        this.stepper.next();
+      }
+
+      if (destination && this.stepper.selectedIndex) {
+        this.destination = destination;
+        this.form.patchValue({ destination: destination.name });
+      }
+    });
   }
 
   changeStepper(stepper: any): void {
@@ -60,4 +79,6 @@ export class AskEagleComponent implements OnInit {
 
     this.locationService.replaceState(`ask-eagle/${label}/`);
   }
+
+  send(): void {}
 }
