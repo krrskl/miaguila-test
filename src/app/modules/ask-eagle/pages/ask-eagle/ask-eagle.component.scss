@@ -25,7 +25,24 @@
   width: 350px;
   height: 90%;
   transform: translate(0, -50%);
-  background: linear-gradient(0, #ffffff 90%, #647fa3 10%);
+
+  ::ng-deep .mat-expansion-indicator {
+    display: none;
+  }
+
+  ::ng-deep .mat-expansion-panel {
+    background: linear-gradient(0, #ffffff 90%, #647fa3 10%);
+    .mat-expansion-panel-header {
+      height: 100px !important;
+      display: block;
+      padding: 0 !important;
+      background: transparent;
+      .mat-content {
+        overflow: inherit;
+        display: block !important;
+      }
+    }
+  }
 
   .ask-stepper__header {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
@@ -70,10 +87,29 @@
   }
 }
 
+@media (max-width: 425px) {
+  .ask-stepper {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 320px) {
+  .ask-stepper {
+    width: 300px;
+  }
+}
+
+.btn-toggle.btn:focus,
+.btn-toggle.btn.focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .trips {
   overflow: hidden;
   overflow-y: scroll;
-  max-height: 41vh;
+  max-height: 35vh;
 }
 
 .flex-align-center {

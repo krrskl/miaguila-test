@@ -13,7 +13,7 @@ import {
   selectFavoritesAddress,
   selectUserPending,
 } from '@core/store/users-store/selectors/user.selectors';
-import { MatVerticalStepper } from '@angular/material';
+import { MatVerticalStepper, MatExpansionPanel } from '@angular/material';
 import { TripAppState } from '@core/store/trips-store/reducers/trip.reducer';
 import { TripActions } from '@core/store/trips-store/actions';
 
@@ -25,6 +25,7 @@ import { TripActions } from '@core/store/trips-store/actions';
 export class AskEagleComponent implements OnInit, OnDestroy {
   tripStoreSubscription: Subscription;
   userStoreSubscription: Subscription;
+
   stepIndex = 0;
   origin?: Direction;
   destination?: Direction;
@@ -32,6 +33,7 @@ export class AskEagleComponent implements OnInit, OnDestroy {
   label: string;
 
   @ViewChild('stepper', { static: true }) stepper: MatVerticalStepper;
+  @ViewChild('expansion', { static: true }) expansion: MatExpansionPanel;
 
   public favorites$: Observable<Direction[]> = this.store$.pipe(
     select(selectFavoritesAddress),
@@ -52,6 +54,20 @@ export class AskEagleComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       origin: defaultData(),
       destination: defaultData(),
+    });
+
+    this.form.statusChanges.subscribe(() => {
+      if (this.origin && this.origin.name !== this.form.value.origin) {
+        this.origin = null;
+        this.destination = null;
+      }
+
+      if (
+        this.destination &&
+        this.destination.name !== this.form.value.destination
+      ) {
+        this.destination = null;
+      }
     });
 
     this.mapService.buildMap();
@@ -90,6 +106,8 @@ export class AskEagleComponent implements OnInit, OnDestroy {
           );
           // Update the reactive form
           this.form.patchValue({ destination: destination.name });
+          // Close expansion
+          this.expansion.close();
           // Update the route in the browser
           this.updateRoute();
         }
@@ -100,10 +118,13 @@ export class AskEagleComponent implements OnInit, OnDestroy {
         this.tripStoreSubscription = this.tripStore$
           .select('trips')
           .subscribe(({ trip }) => {
-            this.mapService.getMapboxDirections.setOrigin(trip.from.location);
-            this.mapService.getMapboxDirections.setDestination(
-              trip.to.location,
-            );
+            if (trip) {
+              this.mapService.getMapboxDirections.setOrigin(trip.from.location);
+              this.mapService.getMapboxDirections.setDestination(
+                trip.to.location,
+              );
+              this.expansion.close();
+            }
           });
       }
     });
