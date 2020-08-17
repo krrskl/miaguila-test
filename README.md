@@ -44,4 +44,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 > Web
 > ![Web](screenshots/web.png?raw=true "Web application")
 
+> CI/CD Github Actions
+> ![CI/CD Github Actions](screenshots/ci_cd.png?raw=true "CI/CD Github Actions")
+
 Made whit ❤️ by [Rubén Carrascal](https://krrskl.github.io/)
