@@ -5,6 +5,10 @@
     width: 30px;
     height: 30px;
   }
+  cursor: pointer;
+  &.disabled {
+    filter: opacity(0.5);
+  }
 }
 
 .flex-align-center {

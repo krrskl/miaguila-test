@@ -71,6 +71,7 @@
 }
 
 .trips {
+  overflow: hidden;
   overflow-y: scroll;
   max-height: 41vh;
 }
